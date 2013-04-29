@@ -1,0 +1,102 @@
+\documentclass[a4paper, 12pt, titlepage]{article}
+
+% Including needed packages
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\DeclareMathOperator{\tr}{tr}
+
+\title
+{{\em Machine learning 3}\\
+Exercise sheet 3}
+\author{FLEISCHMANN Kay, Matrnr: 352247\\
+	ROHRMANN Till, Matrnr: 343756}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{section}{2}
+
+\section{The SSA Cost Function}
+
+Given $X_1 \sim \mathcal{N}(\mu_1,\Sigma_1)$ and $X_2 \sim \mathcal{N}(\mu_2,\Sigma_2)$ be Gaussian random variables with values in $\mathbb{R}^n$.
+The probability density function of $X_i$ is
+\begin{eqnarray}
+	p_{i}(x) &=& \left ( (2\pi)^n \det \Sigma \right)^{-\frac{1}{2}} \exp\left ( -\frac{1}{2} (x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)\right)
+\end{eqnarray}
+
+Derive the explicit formula for the KL-divergence between $X_1$ and $X_2$:
+\begin{eqnarray}
+	D_{KL}(X_2 \mid\mid X_1) &=& \int p_2(x) \log\left( \frac{p_2(x)}{p_1(x)} \right)\ dx \\
+	&=& \int p_2(x) \left( -\frac{1}{2}\log\left( (2\pi)^n \det \Sigma_2 \right) -\frac{1}{2}(x-\mu_2)^T\Sigma_2^{-1}(x-\mu_2)  \right. \nonumber \\
+	&& \left. +\frac{1}{2}\log\left( (2\pi)^n \det \Sigma_1 \right) + \frac{1}{2}(x-\mu_1)^T\Sigma_1^{-1}(x-\mu_1) \right)\ dx \\
+	&=& \frac{1}{2}\log\left( \frac{\det \Sigma_1}{\det \Sigma_2} \right) + \int p_2(x) \left( -\frac{1}{2}(x-\mu_2)^T\Sigma_2^{-1}(x-\mu_2) \right. \nonumber\\
+	&& \left. +\frac{1}{2} (x-\mu_2 +\mu_2 -\mu_1)^T\Sigma^{-1}_1(x-\mu_2+\mu_2-\mu_1) \right)\ dx \\
+	&=& \frac{1}{2}\left( \log\left( \frac{\det\Sigma_1}{\det\Sigma_2} \right) - \mathbb{E}\left[(x-\mu_2)^T\Sigma_2^{-1}(x-\mu_2) \right] \right. \nonumber \\
+	&& \left. + \mathbb{E}\left[(x-\mu_2)^T\Sigma_1^{-1}(x-\mu_2) \right] + \mathbb{E}\left[ (x-\mu_2)^T\Sigma_1^{-1}(\mu_2-\mu_1) \right] \right. \nonumber \\
+	&& \left. \mathbb{E}\left[(\mu_2-\mu_1)^T\Sigma_1^{-1}(x-\mu_2) \right] + (\mu_2-\mu_1)^T\Sigma_1^{-1}(\mu_2-\mu_1) \right) \label{eq:exp}
+\end{eqnarray}
+
+Assume $\epsilon$ is a vector of $n$ random variables. Let $\mu$ denote its mean and $\Sigma$ its covariance matrix. Let $\Lambda$ be an $n$-dimensional symmetric matrix.
+
+\begin{eqnarray}
+	\mathbb{E}\left[ \epsilon^T\Lambda\epsilon \right] &=& \tr \left( \mathbb{E}\left[ \epsilon^T\Lambda\epsilon \right] \right)
+\end{eqnarray}
+
+Due to the linearity of $\tr$ it holds $\mathbb{E} \circ \tr = \tr \circ \mathbb{E}$ and thus
+
+\begin{eqnarray}
+	\mathbb{E}\left[ \epsilon^T\Lambda\epsilon \right] &=& \mathbb{E}\left[ \tr\left(\epsilon^T\Lambda\epsilon\right)  \right]
+\end{eqnarray}
+
+Due to the circular property of the trace operator $\tr\left(ABC\right) = \tr\left(BCA\right)$ the following equation holds
+
+\begin{eqnarray}
+	\mathbb{E}\left[ \epsilon^T\Lambda\epsilon \right]&=& \mathbb{E}\left[\tr\left(\Lambda\epsilon \epsilon^T\right) \right] \\
+	&=& \tr \left( \Lambda \mathbb{E}\left[\epsilon\epsilon^T\right] \right)\\
+	&=& \tr\left( \Lambda \left( \Sigma + \mu\mu^T \right) \right)\\
+	&=& \tr\left(\Lambda \Sigma\right) + \mu^T\Lambda\mu
+\end{eqnarray}
+
+Applied to equation \eqref{eq:exp} we obtain
+
+\begin{eqnarray}
+	\eqref{eq:exp} &=& \frac{1}{2} \left( \log\left(\frac{\det\Sigma_1}{\det\Sigma_2} \right) -\tr\left( \Sigma_2^{-1}\Sigma_2 \right) + \tr\left( \Sigma_1^{-1}\Sigma_2 \right) + 0 + 0 \right. \nonumber \\
+	&& \left. + (\mu_2-\mu_1)^T\Sigma_1^{-1}(\mu_2-\mu_1)  \right) \\
+	&=&\frac{1}{2}\left( \log\left(\frac{\det\Sigma_1}{\det\Sigma_2} \right) -n + \tr\left( \Sigma_1^{-1}\Sigma_2 \right) + (\mu_2-\mu_1)^T\Sigma_1^{-1}(\mu_2-\mu_1)  \right)
+\end{eqnarray}
+
+Which is the final result.
+
+Show that the explicit formula for the SSA cost function can be written:
+\begin{eqnarray}
+	L(R) &=& \sum_{i=1}^N D_{KL}\left[\mathcal{N}(\hat{ \mu}_i^{s}, \hat{ \Sigma}_i^s )\mid \mid \mathcal{N}(0, I) \right]\\
+	&=& \frac{1}{2}\sum_{i=1}^N\left(-\log \left( \det \hat{ \Sigma}_i^s \right) + (\hat{ \mu}_i^s)^T\hat{ \mu}_i^s\right) - \frac{N-1}{2}d
+\end{eqnarray}
+
+\begin{proof}
+	\begin{eqnarray}
+		D_{KL}\left[\mathcal{N}(\hat{ \mu}_i^{s}, \hat{ \Sigma}_i^s )\mid \mid \mathcal{N}(0, I) \right] &=& \frac{1}{2} \left(\log\left( \frac{1}{\det \hat{ \Sigma}_i^s} \right) + \tr(\hat\Sigma_i^s) + (\hat\mu_i^s)^T(\hat\mu_i^s) - d \right)\\
+		 \sum_{i=1}^N D_{KL}\left[\mathcal{N}(\hat{ \mu}_i^{s}, \hat{ \Sigma}_i^s )\mid \mid \mathcal{N}(0, I) \right] &=& \frac{1}{2}\sum_{i=1}^{N} \left( -\log \left( \det \hat \Sigma_i^s \right) + (\hat\mu_i^s)^T(\hat\mu_i^s) \right) \nonumber\\
+		 &&+\frac{1}{2}\sum_{i=1}^N \tr(\hat \Sigma_i^s) - \frac{N}{2}d \label{eq:tr}\\
+		 \sum_{i=1}^N \tr(\hat \Sigma_i^s) &=& \tr\left(\sum_{i=1}^N \hat\Sigma_i^s \right)\\
+		 &=& \tr\left(\sum_{i=1}^N I^dR\hat\Sigma_i (I^dR)^T \right) \\
+		 &=& \tr \left( I^dR \left( \sum_{i=1}^N \hat \Sigma_i \right) (I^dR)^T \right)\\
+		 &=& \tr \left( I^dR I (I^dR)^T \right)\\
+		 &=& d
+	\end{eqnarray}
+	By inserting this result into equation \eqref{eq:tr} we finally obtain:
+	\begin{eqnarray}
+		 L(R) &=& \frac{1}{2}\sum_{i=1}^{N} \left( -\log \left( \det \hat \Sigma_i^s \right) + (\hat\mu_i^s)^T(\hat\mu_i^s) \right) \nonumber\\
+		 && - \frac{N-1}{2}d
+	\end{eqnarray}
+\end{proof}
+
+
+
+\section{Finding the stationary subspace}
+\end{document}
