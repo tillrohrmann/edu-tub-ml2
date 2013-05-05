@@ -5,6 +5,10 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+
 
 \DeclareMathOperator{\tr}{tr}
 
@@ -96,9 +100,90 @@ Show that the explicit formula for the SSA cost function can be written:
 \end{proof}
 
 
-
+\newpage
 \section{Finding the stationary subspace}
 
+\subsection{Dataset}
+
+The following plots describe the dataset given for the exercise on which the SSA should be applied. In this dataset stationarity an non-stationarity are embedded.
+
+\begin{figure}[H]
+	\centering
+	\subfloat[\label{test1}]{\includegraphics[width=5cm]{images/x1.png}}
+	\subfloat[\label{l0pvs}]{\includegraphics[width=5cm]{images/x2.png}}
+	\subfloat[\label{l0pvs}]{\includegraphics[width=5cm]{images/x3.png}} \\
+	\subfloat[\label{l0pvs}]{\includegraphics[width=5cm]{images/x4.png}} 
+	\subfloat[\label{l0pvs}]{\includegraphics[width=5cm]{images/x5.png}} 
+	\subfloat[\label{l0pvs}]{\includegraphics[width=5cm]{images/x6.png}} \\
+	\subfloat[\label{l0pvs}]{\includegraphics[width=5cm]{images/x7.png}} 
+	\subfloat[\label{l0pvs}]{\includegraphics[width=5cm]{images/x8.png}}
+	\subfloat[\label{l0pvs}]{\includegraphics[width=5cm]{images/x9.png}} \\
+	\subfloat[\label{l0pvs}]{\includegraphics[width=5cm]{images/x10.png}}
+	\caption{ Plots of each of the 10  (a)-(j) components with stationary and non-stationary included }
+\end{figure}
+
+
+\subsection{Experiments}
+
+For the next experiments the number of expoches is set to 25. If one assume the number stationary sources in the dataset is $dd=3$, the plot of each component looks like:
+\begin{figure}[H]
+	\centering
+	\subfloat[\label{test1}]{\includegraphics[width=\textwidth]{images/s1_3.png}}
+	\caption{ Plot if number of stationary sources is set to 3.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subfloat[\label{test1}]{\includegraphics[width=\textwidth]{images/s1_4.png}}
+	\caption{ Plot if number of stationary sources is set to 4.}
+\end{figure}
+
+
+In the next plot the number of stationary sources is incremnted to $dd=5$:
+
+\begin{figure}[H]
+	\centering
+	\subfloat[\label{test1}]{\includegraphics[width=\textwidth]{images/s1_5.png}}
+	\caption{ Plot if number of stationary sources is set to 5.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subfloat[\label{test1}]{\includegraphics[width=\textwidth]{images/s1_6.png}}
+	\caption{ Plot if number of stationary sources is set to 6.}
+\end{figure}
+
+
+In the next experiment, the number of stationary sources is incremnted to $dd=7$:
+
+
+\begin{figure}[H]
+	\centering
+	\subfloat[\label{test1}]{\includegraphics[width=\textwidth]{images/s1_7.png}}
+	\caption{ Plot if number of stationary sources is set to 7.}
+\end{figure}
+
+
+\subsection{Number of stationary sources and projection}
+If one compare the different plots from $dd=3$ to $dd=7$ the non-stationariy sources appear more and more.
+Assuming the stationary sources coming from the same underlying distribution over the time-series, the best choice of the number of stationary sources ist 3.
+\newline \newline
+
+The projectionmatrix $B^s$ \newline
+
+$
+\begin{matrix}
+
+    0.6581 &  -0.6022 &  -0.0495 &   0.6484 &  -0.1115 &   0.3517 &   0.6469 &  -0.3847 &   0.5758 &	0.0258 \\
+   -0.0397 &   0.4733 &   0.2207 &  -0.1916 &  -0.1813 &  -0.3004 &  -0.1542 &  -0.2849 &  -0.6388 &	-0.4793 \\
+    0.2932 &  -0.2916 &  -0.4973 &   0.7134 &   0.5037 &  -0.3822 &  0.0260 &  -0.3462  &  0.5083  &    0.1465
+
+\end{matrix}
+$
+
+
+
+\newpage
 \section{Uniqueness and identifiability of the SSA model}
 
 \subsection*{$\left(a^\star\right)$}

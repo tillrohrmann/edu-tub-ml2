@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.4.9)  29 APR 2013 17:07
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.3)  5 MAY 2013 11:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **report.tex
 (./report.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, fr
-ench, basque, loaded.
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
+aded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
@@ -134,21 +134,167 @@ Package: amsthm 2009/07/02 v2.20.1
 \thm@postskip=\skip47
 \thm@headsep=\skip48
 \dth@everypar=\toks26
-) (./report.aux)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count102
+))
+\Gin@req@height=\dimen120
+\Gin@req@width=\dimen121
+)
+(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2012/02/19 v3.2f Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
+\captionmargin=\dimen122
+\captionmargin@=\dimen123
+\captionwidth=\dimen124
+\caption@indent=\dimen125
+\caption@parindent=\dimen126
+\caption@hangindent=\dimen127
+)
+\c@ContinuedFloat=\count103
+)
+\c@KVtest=\count104
+\sf@farskip=\skip49
+\sf@captopadj=\dimen128
+\sf@capskip=\skip50
+\sf@nearskip=\skip51
+\c@subfigure=\count105
+\c@subfigure@save=\count106
+\c@lofdepth=\count107
+\c@subtable=\count108
+\c@subtable@save=\count109
+\c@lotdepth=\count110
+\sf@top=\skip52
+\sf@bottom=\skip53
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count111
+\float@exts=\toks27
+\float@box=\box28
+\@float@everytoks=\toks28
+\@floatcapt=\box29
+) (./report.aux
+
+LaTeX Warning: Label `l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `sub@l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `sub@l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `sub@l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `sub@l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `sub@l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `sub@l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `sub@l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `sub@l0pvs' multiply defined.
+
+
+LaTeX Warning: Label `test1' multiply defined.
+
+
+LaTeX Warning: Label `sub@test1' multiply defined.
+
+
+LaTeX Warning: Label `test1' multiply defined.
+
+
+LaTeX Warning: Label `sub@test1' multiply defined.
+
+
+LaTeX Warning: Label `test1' multiply defined.
+
+
+LaTeX Warning: Label `sub@test1' multiply defined.
+
+
+LaTeX Warning: Label `test1' multiply defined.
+
+
+LaTeX Warning: Label `sub@test1' multiply defined.
+
+
+LaTeX Warning: Label `test1' multiply defined.
+
+
+LaTeX Warning: Label `sub@test1' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -184,42 +330,222 @@ LaTeX Font Info:    ... okay on input line 18.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 20.
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count112
+\scratchdimen=\dimen129
+\scratchbox=\box30
+\nofMPsegments=\count113
+\nofMParguments=\count114
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count115
+\MPscratchDim=\dimen130
+\MPnumerator=\count116
+\makeMPintoPDFobject=\count117
+\everyMPtoPDFconversion=\toks30
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
+
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 20.
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1] [2] (./report.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1] [2]
+<images/x1.png, id=24, 553.06625pt x 418.56375pt>
+File: images/x1.png Graphic file (type png)
+ <use images/x1.png>
+Package pdftex.def Info: images/x1.png used on input line 112.
+(pdftex.def)             Requested size: 142.26378pt x 107.6616pt.
+
+<images/x2.png, id=25, 561.09625pt x 419.5675pt>
+File: images/x2.png Graphic file (type png)
+ <use images/x2.png>
+Package pdftex.def Info: images/x2.png used on input line 113.
+(pdftex.def)             Requested size: 142.26378pt x 106.37689pt.
+
+<images/x3.png, id=26, 554.07pt x 418.56375pt>
+File: images/x3.png Graphic file (type png)
+ <use images/x3.png>
+Package pdftex.def Info: images/x3.png used on input line 114.
+(pdftex.def)             Requested size: 142.26378pt x 107.47pt.
+
+<images/x4.png, id=27, 560.0925pt x 422.57875pt>
+File: images/x4.png Graphic file (type png)
+ <use images/x4.png>
+Package pdftex.def Info: images/x4.png used on input line 115.
+(pdftex.def)             Requested size: 142.26378pt x 107.3338pt.
+
+<images/x5.png, id=28, 556.0775pt x 419.5675pt>
+File: images/x5.png Graphic file (type png)
+ <use images/x5.png>
+Package pdftex.def Info: images/x5.png used on input line 116.
+(pdftex.def)             Requested size: 142.26378pt x 107.3372pt.
+
+<images/x6.png, id=29, 558.085pt x 422.57875pt>
+File: images/x6.png Graphic file (type png)
+ <use images/x6.png>
+Package pdftex.def Info: images/x6.png used on input line 117.
+(pdftex.def)             Requested size: 142.26378pt x 107.72069pt.
+
+<images/x7.png, id=30, 558.085pt x 421.575pt>
+File: images/x7.png Graphic file (type png)
+ <use images/x7.png>
+Package pdftex.def Info: images/x7.png used on input line 118.
+(pdftex.def)             Requested size: 142.26378pt x 107.46481pt.
+
+<images/x8.png, id=31, 560.0925pt x 420.57124pt>
+File: images/x8.png Graphic file (type png)
+ <use images/x8.png>
+Package pdftex.def Info: images/x8.png used on input line 119.
+(pdftex.def)             Requested size: 142.26378pt x 106.8239pt.
+
+<images/x9.png, id=32, 561.09625pt x 417.56pt>
+File: images/x9.png Graphic file (type png)
+ <use images/x9.png>
+Package pdftex.def Info: images/x9.png used on input line 120.
+(pdftex.def)             Requested size: 142.26378pt x 105.8679pt.
+
+<images/x10.png, id=33, 559.08875pt x 420.57124pt>
+File: images/x10.png Graphic file (type png)
+ <use images/x10.png>
+Package pdftex.def Info: images/x10.png used on input line 121.
+(pdftex.def)             Requested size: 142.26378pt x 107.01643pt.
+
+<images/s1_3.png, id=34, 1443.3925pt x 793.96625pt>
+File: images/s1_3.png Graphic file (type png)
+ <use images/s1_3.png>
+Package pdftex.def Info: images/s1_3.png used on input line 131.
+(pdftex.def)             Requested size: 483.69687pt x 266.06818pt.
+
+[3 <./images/x1.png> <./images/x2.png> <./images/x3.png> <./images/x4.png> <./i
+mages/x5.png> <./images/x6.png> <./images/x7.png> <./images/x8.png> <./images/x
+9.png> <./images/x10.png>] <images/s1_4.png, id=39, 1444.39626pt x 792.9625pt>
+File: images/s1_4.png Graphic file (type png)
+
+<use images/s1_4.png>
+Package pdftex.def Info: images/s1_4.png used on input line 137.
+(pdftex.def)             Requested size: 483.69687pt x 265.53821pt.
+ <images/s1_5.png, id=40, 1442.38875pt x 789.95125pt>
+File: images/s1_5.png Graphic file (type png)
+
+<use images/s1_5.png>
+Package pdftex.def Info: images/s1_5.png used on input line 146.
+(pdftex.def)             Requested size: 483.69687pt x 264.90349pt.
+ [4 <./images/s1_3.png> <./images/s1_4.png>]
+<images/s1_6.png, id=44, 1443.3925pt x 793.96625pt>
+File: images/s1_6.png Graphic file (type png)
+ <use images/s1_6.png>
+Package pdftex.def Info: images/s1_6.png used on input line 152.
+(pdftex.def)             Requested size: 483.69687pt x 266.06818pt.
+
+<images/s1_7.png, id=45, 1444.39626pt x 794.97pt>
+File: images/s1_7.png Graphic file (type png)
+ <use images/s1_7.png>
+Package pdftex.def Info: images/s1_7.png used on input line 162.
+(pdftex.def)             Requested size: 483.69687pt x 266.21046pt.
+
+[5 <./images/s1_5.png> <./images/s1_6.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 168--171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+
+ []
+
+
+Overfull \hbox (43.64703pt too wide) in paragraph at lines 174--183
+[]$ [] $ 
+ []
+
+[6 <./images/s1_7.png>] [7] [8] (./report.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 1718 strings out of 495030
- 21039 string characters out of 3180762
- 85462 words of memory out of 3000000
- 4926 multiletter control sequences out of 15000+200000
- 12483 words of font info for 48 fonts, out of 3000000 for 9000
+ 4207 strings out of 495059
+ 61432 string characters out of 3182031
+ 133868 words of memory out of 3000000
+ 7321 multiletter control sequences out of 15000+200000
+ 13097 words of font info for 50 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 27i,10n,32p,270b,193s stack positions out of 5000i,500n,10000p,200000b,50000s
-</
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
-b>
-Output written on report.pdf (3 pages, 118245 bytes).
+ 44i,13n,46p,340b,378s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on report.pdf (9 pages, 361963 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 105 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
