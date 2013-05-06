@@ -1,0 +1,86 @@
+\documentclass[a4paper, 12pt, titlepage]{article}
+
+% Including needed packages
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+
+
+\DeclareMathOperator{\tr}{tr}
+
+\title
+{{\em Machine learning 2}\\
+Exercise sheet 4}
+\author{FLEISCHMANN Kay, Matrnr: 352247\\
+	ROHRMANN Till, Matrnr: 343756}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{section}{5}
+
+
+\section{Kernel Canonical Correlation Analysis}
+Given some trainingdata $X \in \mathbb{R}^{d1 \times N} $ and $Y \in \mathbb{R}^{d2 \times N}$. The idea behind CCA is to find two one dimensional projections  $w_x$ and $w_y$ into  space in which a latent variable exists with maximal correlation. Let $C_{xx} = XX^T$, $C_{yy} = YY^T$, $C_{xy} = XY^T$ and $C_{yx} = YX^T$.
+\newline \newline
+Formally, Find $w_x \in \mathbb{R}^{d1}$, $w_y \in \mathbb{R}^{d2}$ which
+\begin{eqnarray}
+  maximaize & w^{T}_{x} C_{xy}w_y
+ \end{eqnarray}
+with subject to
+\begin{eqnarray}
+  w^T_xC_{xx}w_x=1 \\
+  w^T_yC_{yy}w_y=1 
+\end{eqnarray}
+Show that it is always possible to find an optimal solution in the span of the data, that is $w_x= X \alpha_x$, $w_y = Y \alpha_y$:
+\begin{eqnarray}
+TODO ??
+\end{eqnarray}
+Derive the dual optimization problem: \newline
+\begin{eqnarray}
+  \mathcal{L}(\alpha, \beta) &=& w^{T}_{x} C_{xy}w_y - \frac{1}{2} \alpha (w^T_xC_{xx}w_x-1) \frac{1}{2} \beta (w^T_yC_{yy}w_y-1)
+  \end{eqnarray}
+\begin{eqnarray}
+  \frac{\partial L}{\partial w^T_x} = XY^Tw_y - \alpha( XX^Tw_x ) = 0  \Leftrightarrow XY^Tw_y = \alpha( XX^Tw_x ) \\
+  \frac{\partial L}{\partial w^T_y} = XY^Tw_x - \beta ( YY^Tw_y) = 0 \Leftrightarrow  XY^Tw_x = \beta ( YY^Tw_y)
+\end{eqnarray}
+Multiplication $w^T_x$ with Equation (6) and $w^T_y$ with Equation (7) results to:
+\begin{eqnarray}
+  w^T_xXY^Tw_y = \alpha( w^T_xXX^Tw_x ) \\
+  w^T_yXY^Tw_x = \beta ( w^T_yYY^Tw_y) 
+\end{eqnarray}
+Because of constraints (1) and (2) 
+\begin{eqnarray}
+  \alpha( XX^Tw_x )=\beta ( w^T_yYY^Tw_y)  \Rightarrow \alpha = \beta
+\end{eqnarray}
+Next we combine equation (6)-(10)
+\begin{eqnarray}
+  C_{xy}w_y = \alpha C_{xx}  w_x \\
+  C_{yx}w_x = \alpha C_{yy}  w_y
+\end{eqnarray}
+and witen in a matrix we get finally an eigenvalue problem: \newline \newline
+$
+\begin{bmatrix} 0 & C_{xy} \\ C_{yx} & 0 \end{bmatrix}
+\begin{bmatrix} w_x \\ w_y \end{bmatrix} =  \alpha
+\begin{bmatrix} C_{xx} & 0 \\ 0 & C_{yy} \end{bmatrix}
+\begin{bmatrix} w_x \\ w_y \end{bmatrix}
+$
+
+With the assumtion of (4) and the equations (1)-(3) and $w_x= X \alpha_x$, $w_y = Y \alpha_y$:
+
+\begin{eqnarray}
+  maximaize & w^{T}_{x} C_{xy}w_y
+ \end{eqnarray}
+with subject to
+\begin{eqnarray}
+  w^T_xC_{xx}w_x=1 \\
+  w^T_yC_{yy}w_y=1 
+\end{eqnarray}
+
+\end{document}
