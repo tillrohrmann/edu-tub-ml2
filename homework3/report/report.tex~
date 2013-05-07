@@ -91,12 +91,192 @@ Show that the explicit formula for the SSA cost function can be written:
 	\end{eqnarray}
 	By inserting this result into equation \eqref{eq:tr} we finally obtain:
 	\begin{eqnarray}
-		 L(R) &=& \frac{1}{2}\sum_{i=1}^{N} \left( -\log \left( \det \hat \Sigma_i^s \right) + (\hat\mu_i^s)^T(\hat\mu_i^s) \right) \nonumber\\
-		 && - \frac{N-1}{2}d
+		 L(R) &=& \frac{1}{2}\sum_{i=1}^{N} \left( -\log \left( \det \hat \Sigma_i^s \right) + (\hat\mu_i^s)^T(\hat\mu_i^s) \right) - \frac{N-1}{2}d
 	\end{eqnarray}
 \end{proof}
 
 
 
 \section{Finding the stationary subspace}
+
+\section{Uniqueness and identifiability of the SSA model}
+
+\subsection*{$\left(a^\star\right)$}
+
+\paragraph{The mixing matrix $A$ can in general not be identified exactly.}
+
+The problem of identifying the mixing matrix $A$ uniquely is that any linear combination of a stationary time series is again stationary.
+Furthermore, any linear combination of a stationary and non-stationary time series is non-stationary as-well.
+Thus, even if we find an unmixing matrix $\hat B$ which separates the signal into its stationary and non-stationary part, one cannot be sure to have found the true unmixing matrix, because the basis of the stationary and non-stationary spaces can only be identified up to an arbitrary linear transformation within these spaces.
+Having said that, a short example follows:
+
+Assume a 3-dimensional source with 2 stationary sources and as mixing matrix the identity $A=I$:
+\begin{eqnarray}
+	\left(
+		\begin{array}{c}
+		x_1(t)\\
+		x_2(t)\\
+		x_3(t)		
+		\end{array}
+	\right) &=& A \left(
+		\begin{array}{c}
+			s^s_1(t)\\
+			s^s_2(t)\\
+			s^n_1(t)
+		\end{array}
+	\right)
+\end{eqnarray}
+
+Obviously, the identity matrix would also be a perfect unmixing matrix $\hat B = I$.
+However, we cannot distinguish that solution from another solution where the 2 stationary sources are permuted:
+\begin{eqnarray}
+	\left(
+		\begin{array}{c}
+		x_1(t)\\
+		x_2(t)\\
+		x_3(t)		
+		\end{array}
+	\right) &=& A \cdot \left(
+		\begin{array}{ccc}
+		0&1&0\\
+		1&0&0\\
+		0&0&1
+		\end{array}
+	\right) \cdot \left(
+		\begin{array}{c}
+			s^s_1(t)\\
+			s^s_2(t)\\
+			s^n_1(t)
+		\end{array}
+	\right)
+\end{eqnarray}
+$\hat B=I$ would again separate the stationary and non-stationary space perfectly but not get the order right.
+Consequently, matrix $A$ cannot be identified exactly.
+
+\paragraph{Restriction on solutions of unmixing matrix.}
+Assuming that we have found an unmixing matrix $\hat B = \hat A^{-1}$, then we also get an approximation of the stationary and non-stationary space $\hat A^s$ and $\hat A^n$. Since $\hat A$ has full rank we can express the true mixing matrix $A$ the following way:
+\begin{eqnarray}
+	A^s &=& \hat A^s M_1 + \hat A^n M_2\\
+	A^n &=& \hat A^s M_3 + \hat A^n M_4\\
+	\left(
+		\begin{array}{c}
+			\hat s^s\\
+			\hat s^n 
+		\end{array}
+	\right) &=& \hat B A \left (
+		\begin{array}{c}
+			s^s\\
+			s^n 
+		\end{array}
+	\right )\\
+	&=& \left(
+		\begin{array}{cc}
+			M_1& M_3\\
+			M_2 & M_4 \\
+		\end{array}
+	\right) \cdot \left(
+		\begin{array}{c}
+			s^s\\
+			s^n
+		\end{array}
+	\right)
+\end{eqnarray}
+
+Since $\hat s^s$ shall be stationary, we mustn't mix in some non-stationary parts.
+Thus, $M_3=0$.
+The other matrices can be arbitrarily chosen.
+That implies:
+\begin{eqnarray}
+	A^s &=& \hat A^s M_1 + \hat A_n M_2\\
+	A^n &=& \hat A^n M_4
+\end{eqnarray}
+
+Consequently, the stationary space cannot be retrieved but it is possible to retrieve the non-stationary space up to an linear transformation of its basis.
+
+\subsection*{$\left( b^\star \right)$}
+
+To show: Given the column span of $A^n$ the mixing model is uniquely determined.
+
+\begin{proof}
+	The idea behind the proof is that we can only solve the unmixing problem up to an multiplicative factor $\left(
+		\begin{array}{cc}
+			M_1& 0\\
+			M_2 & M_4 \\
+		\end{array}
+	\right)$.
+	By solving the mixing problem with the column span $A^n$ and some additionally chosen vectors instead of $A^s$, we also obtain a solution for the original mixing problem $A=\left[ A^s \mid A^n \right]$.
+	Given the column span $A^n$ we can extend it to a basis of dimension $D$.
+	Let $\tilde A^s$ denote the newly added basis vectors.
+	$\tilde A = \left [ \tilde A^s \mid A^n \right]$ is then used as mixing matrix:
+	\begin{eqnarray}
+		x(t) &=& \tilde A \left(
+		\begin{array}{c}
+			s^s(t)\\
+			s^n(t)
+		\end{array}
+		\right)
+	\end{eqnarray}
+	For this problem we find, we find a unmixing matrix $\hat B$ such that:
+	\begin{eqnarray}
+		\hat B x(t) = \left(
+		\begin{array}{cc}
+			M_1& 0\\
+			M_2 & M_4 \\
+		\end{array}
+	\right) \cdot  \left(
+		\begin{array}{c}
+			s^s(t)\\
+			s^n(t)
+		\end{array}
+		\right)
+	\end{eqnarray}
+	
+	By showing that $\hat B$ is also a solution for the original problem, we prove the equivalancy of the two problems and thus show that the mixing model is uniquely determined by its column span.
+	
+	Since the columns of $\tilde A$ are a basis we can find a solution to the following problem:
+	\begin{eqnarray}
+		A^s &=& \tilde A^s Q_1 + A^n Q_2	
+	\end{eqnarray}
+	
+	And now
+	\begin{eqnarray}
+		\hat B A &=& \left(
+		\begin{array}{cc}
+			M_1& 0\\
+			M_2 & M_4 \\
+		\end{array}
+		\right) \left[
+		\begin{matrix}
+		(\tilde A^s)^{-1}\\
+		\hline
+		(A^n)^{-1}		
+		\end{matrix} \right] \cdot \left  [ \tilde A^s Q_1 + A^n Q_2 \mid A^n \right] \\
+		&=&  \left(
+		\begin{array}{cc}
+			M_1& 0\\
+			M_2 & M_4 \\
+		\end{array}
+		\right) \cdot \left(
+		\begin{array}{cc}
+			Q_1& 0\\
+			Q_2 & I \\
+		\end{array}
+		\right)\\
+		&=& \left(
+		\begin{array}{cc}
+			M_1 \cdot Q_1& 0\\
+			M_2\cdot Q_1 + M_4 \cdot Q_2 & M_4 \\
+		\end{array}
+		\right)\\
+		&=&  \left(
+		\begin{array}{cc}
+			\tilde M_1 & 0\\
+			\tilde M_2 & M_4 \\
+		\end{array}
+		\right)
+	\end{eqnarray}
+	
+	
+\end{proof}
+
 \end{document}
