@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.3)  5 MAY 2013 11:34
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.3)  7 MAY 2013 01:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -201,86 +201,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box28
 \@float@everytoks=\toks28
 \@floatcapt=\box29
-) (./report.aux
-
-LaTeX Warning: Label `l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `sub@l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `sub@l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `sub@l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `sub@l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `sub@l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `sub@l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `sub@l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `sub@l0pvs' multiply defined.
-
-
-LaTeX Warning: Label `test1' multiply defined.
-
-
-LaTeX Warning: Label `sub@test1' multiply defined.
-
-
-LaTeX Warning: Label `test1' multiply defined.
-
-
-LaTeX Warning: Label `sub@test1' multiply defined.
-
-
-LaTeX Warning: Label `test1' multiply defined.
-
-
-LaTeX Warning: Label `sub@test1' multiply defined.
-
-
-LaTeX Warning: Label `test1' multiply defined.
-
-
-LaTeX Warning: Label `sub@test1' multiply defined.
-
-
-LaTeX Warning: Label `test1' multiply defined.
-
-
-LaTeX Warning: Label `sub@test1' multiply defined.
-
-)
+) (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
@@ -402,150 +323,60 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1] [2]
-<images/x1.png, id=24, 553.06625pt x 418.56375pt>
-File: images/x1.png Graphic file (type png)
- <use images/x1.png>
-Package pdftex.def Info: images/x1.png used on input line 112.
-(pdftex.def)             Requested size: 142.26378pt x 107.6616pt.
-
-<images/x2.png, id=25, 561.09625pt x 419.5675pt>
-File: images/x2.png Graphic file (type png)
- <use images/x2.png>
-Package pdftex.def Info: images/x2.png used on input line 113.
-(pdftex.def)             Requested size: 142.26378pt x 106.37689pt.
-
-<images/x3.png, id=26, 554.07pt x 418.56375pt>
-File: images/x3.png Graphic file (type png)
- <use images/x3.png>
-Package pdftex.def Info: images/x3.png used on input line 114.
-(pdftex.def)             Requested size: 142.26378pt x 107.47pt.
-
-<images/x4.png, id=27, 560.0925pt x 422.57875pt>
-File: images/x4.png Graphic file (type png)
- <use images/x4.png>
-Package pdftex.def Info: images/x4.png used on input line 115.
-(pdftex.def)             Requested size: 142.26378pt x 107.3338pt.
-
-<images/x5.png, id=28, 556.0775pt x 419.5675pt>
-File: images/x5.png Graphic file (type png)
- <use images/x5.png>
-Package pdftex.def Info: images/x5.png used on input line 116.
-(pdftex.def)             Requested size: 142.26378pt x 107.3372pt.
-
-<images/x6.png, id=29, 558.085pt x 422.57875pt>
-File: images/x6.png Graphic file (type png)
- <use images/x6.png>
-Package pdftex.def Info: images/x6.png used on input line 117.
-(pdftex.def)             Requested size: 142.26378pt x 107.72069pt.
-
-<images/x7.png, id=30, 558.085pt x 421.575pt>
-File: images/x7.png Graphic file (type png)
- <use images/x7.png>
-Package pdftex.def Info: images/x7.png used on input line 118.
-(pdftex.def)             Requested size: 142.26378pt x 107.46481pt.
-
-<images/x8.png, id=31, 560.0925pt x 420.57124pt>
-File: images/x8.png Graphic file (type png)
- <use images/x8.png>
-Package pdftex.def Info: images/x8.png used on input line 119.
-(pdftex.def)             Requested size: 142.26378pt x 106.8239pt.
-
-<images/x9.png, id=32, 561.09625pt x 417.56pt>
-File: images/x9.png Graphic file (type png)
- <use images/x9.png>
-Package pdftex.def Info: images/x9.png used on input line 120.
-(pdftex.def)             Requested size: 142.26378pt x 105.8679pt.
-
-<images/x10.png, id=33, 559.08875pt x 420.57124pt>
-File: images/x10.png Graphic file (type png)
- <use images/x10.png>
-Package pdftex.def Info: images/x10.png used on input line 121.
-(pdftex.def)             Requested size: 142.26378pt x 107.01643pt.
-
-<images/s1_3.png, id=34, 1443.3925pt x 793.96625pt>
-File: images/s1_3.png Graphic file (type png)
- <use images/s1_3.png>
-Package pdftex.def Info: images/s1_3.png used on input line 131.
-(pdftex.def)             Requested size: 483.69687pt x 266.06818pt.
-
-[3 <./images/x1.png> <./images/x2.png> <./images/x3.png> <./images/x4.png> <./i
-mages/x5.png> <./images/x6.png> <./images/x7.png> <./images/x8.png> <./images/x
-9.png> <./images/x10.png>] <images/s1_4.png, id=39, 1444.39626pt x 792.9625pt>
-File: images/s1_4.png Graphic file (type png)
-
-<use images/s1_4.png>
-Package pdftex.def Info: images/s1_4.png used on input line 137.
-(pdftex.def)             Requested size: 483.69687pt x 265.53821pt.
- <images/s1_5.png, id=40, 1442.38875pt x 789.95125pt>
-File: images/s1_5.png Graphic file (type png)
-
-<use images/s1_5.png>
-Package pdftex.def Info: images/s1_5.png used on input line 146.
-(pdftex.def)             Requested size: 483.69687pt x 264.90349pt.
- [4 <./images/s1_3.png> <./images/s1_4.png>]
-<images/s1_6.png, id=44, 1443.3925pt x 793.96625pt>
-File: images/s1_6.png Graphic file (type png)
- <use images/s1_6.png>
-Package pdftex.def Info: images/s1_6.png used on input line 152.
-(pdftex.def)             Requested size: 483.69687pt x 266.06818pt.
-
-<images/s1_7.png, id=45, 1444.39626pt x 794.97pt>
-File: images/s1_7.png Graphic file (type png)
- <use images/s1_7.png>
-Package pdftex.def Info: images/s1_7.png used on input line 162.
-(pdftex.def)             Requested size: 483.69687pt x 266.21046pt.
-
-[5 <./images/s1_5.png> <./images/s1_6.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 168--171
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 30--33
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--171
+Underfull \hbox (badness 10000) in paragraph at lines 44--46
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 66--75
 
  []
 
 
-Overfull \hbox (43.64703pt too wide) in paragraph at lines 174--183
-[]$ [] $ 
+Underfull \hbox (badness 10000) in paragraph at lines 66--75
+
  []
 
-[6 <./images/s1_7.png>] [7] [8] (./report.aux)
 
-LaTeX Warning: There were multiply-defined labels.
+Underfull \hbox (badness 10000) in paragraph at lines 66--75
 
- ) 
+ []
+
+[1]
+Underfull \hbox (badness 10000) in paragraph at lines 88--99
+
+ []
+
+[2] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 4207 strings out of 495059
- 61432 string characters out of 3182031
- 133868 words of memory out of 3000000
- 7321 multiletter control sequences out of 15000+200000
- 13097 words of font info for 50 fonts, out of 3000000 for 9000
+ 4115 strings out of 495059
+ 60022 string characters out of 3182031
+ 131774 words of memory out of 3000000
+ 7246 multiletter control sequences out of 15000+200000
+ 12790 words of font info for 49 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 44i,13n,46p,340b,378s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (9 pages, 361995 bytes).
+ 44i,8n,42p,383b,193s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cme
+x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/symbols/msbm10.pfb>
+Output written on report.pdf (3 pages, 110725 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 58 PDF objects out of 1000 (max. 8388607)
+ 41 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
