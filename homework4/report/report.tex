@@ -95,7 +95,9 @@ $
 \begin{bmatrix} \alpha_x \\ \alpha_y \end{bmatrix}
 $ \newline \newline
 (b) \textit{ Describe how the generalized eiganvalue problem from exercise (a) - and thun CCA - can be kernalized. }
-Computing the covariance of $X^TX$ or $Y^TY$ for realy big matrices can be very expensive. The Kernel-Equation shows, that the solution of the generalized eigenvalue problem just depends on the scalar product between the datapoints. Therefore knowlege  about the kernel (this means the scalarproduct between points $X^TX$ or $Y^TY$) is enough to compute valid solutions.
+Computing the covariances of $X^TX$ or $Y^TY$ for big matrices can be very inaccurate. This can be solved by introduction a kernel .
+
+kCCA shows, that the solution of the generalized eigenvalue problem just depends on the scalar product between the datapoints. Therefore knowlege  about the kernel (this means the scalarproduct between points $X^TX$ or $Y^TY$) is enough to compute valid solutions.
 
 
 
