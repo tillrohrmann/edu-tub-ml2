@@ -27,7 +27,9 @@ Exercise sheet 4}
 
 
 \section{Kernel Canonical Correlation Analysis}
-(a) Given some training data $X \in \mathbb{R}^{d1 \times N} $ and $Y \in \mathbb{R}^{d2 \times N}$. 
+
+\subsection*{(6a.) Derive the dual optimization problem}
+Given some training data $X \in \mathbb{R}^{d1 \times N} $ and $Y \in \mathbb{R}^{d2 \times N}$. 
 The idea behind CCA is to find two features $w_x$ and $w_y$ in input space such that their correlation is maximised.
 Let $C_{xx} = XX^T$, $C_{yy} = YY^T$, $C_{xy} = XY^T$ and $C_{yx} = YX^T$.
 \newline \newline
@@ -112,7 +114,8 @@ Written in matrix form, we finally get a generalized eigenvalue problem: \newlin
 \begin{bmatrix} w_x \\ w_y \end{bmatrix} \label{eq:maeq}
 \end{eqnarray}
 
-\subsection{Dual optimization problem}
+\subsection*{Show that the dual optimization
+problem is equivalent to finding the solution of the generalized eigenvalue problem}
 Since we know that there exists an optimal solution in the data span, we can represent our $w_x$ and $w_y$ by:
 \begin{eqnarray}
 	w_x &=& X\alpha_x \label{eq:s1}\\
@@ -186,7 +189,7 @@ With $K_X = X^TX$ and $K_Y = Y^TY$ we finally obtain
 	\end{bmatrix}
 \end{eqnarray*}
 
-\subsection{Describe how the generalized eigenvalue problem from exercise (a) - and thus CCA - can be kernelized.}
+\subsection*{(6b.) Describe how the generalized eigenvalue problem from exercise (a) - and thus CCA - can be kernelized.}
 The kernel trick extends a machine learning algorithm by introducing a mapping of the data points into a higher dimensional feature-space, without knowing the mapping-functions explicitely.  This happens with the idea of just knowing a scalar product in this space and we are able to change the formulation of the machine learning algorithm which now just needs the scalar-products between the datapoints.
 
 
