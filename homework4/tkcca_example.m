@@ -1,10 +1,12 @@
-fprintf('Loading Data\n')
-load tkcca_toy_data
+%fprintf('Loading Data\n')
+%load tkcca_toy_data
 
-fprintf('Computing tkCCA\n')
-[c,U,V] = tkcca_simple(x,y,lag,kappas);
+%fprintf('Computing tkCCA\n')
+%[c,U,V] = tkcca_simple(x,y,lag,kappas);
 
 fprintf('Plotting Results\n')
+
+
 % plot results
 figure(42),clf
 subplot(2,3,1:3)

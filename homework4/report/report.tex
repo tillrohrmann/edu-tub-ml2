@@ -187,6 +187,8 @@ With $K_X = X^TX$ and $K_Y = Y^TY$ we finally obtain
 \end{eqnarray*}
 
 \subsection{Describe how the generalized eigenvalue problem from exercise (a) - and thus CCA - can be kernelized.}
+The kernel trick extends a machine learning algorithm by introducing a mapping of the data points into a higher dimensional feature-space, without knowing the mapping-functions explicitely.  This happens with the idea of just knowing a scalar product in this space and we are able to change the formulation of the machine learning algorithm which now just needs the scalar-products between the datapoints.
+
 
 To apply the CCA to a feature space without explicitely calculating the mapping between input and feature space, we can easily adapt the existing method.
 Given that we have a kernel function $k(\cdot,\cdot)$ representing the inner product in our feature space, we only have to substitute $K_X$ by $(\tilde{K}_X)_{i,j} = k(x_i,x_j)$ and $K_Y$ by $(\tilde{K}_Y)_{i,j} = k(y_i,y_j)$ where $x_i$ is the $i$-th column of $X$ and $y_i$ the $i$-th column of $Y$.
