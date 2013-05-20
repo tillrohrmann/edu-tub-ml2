@@ -9,24 +9,29 @@ dim=length(K);
 %minimize   c' * x + 1/2 x' * H * x
 %subject to A'*x = b
 %           l <= x <= u
-
-%u=ones(dim,1);
+% Dimensions: c : N-column vector
+%             H : NxN matrix
+%             A : N-row vector
+%             b : real number
+%             l : N-column vector
+%             u : N-column vector
+% 
+%             x : N-column vector
+%             y : Objective value
+%ERROR: chol works not propperly on very slow (close to zero) data
 %c=diag(K)';
 %H=-K;
 %b=1;
-%A=u;
+%A=ones(dim,1);
 %l=zeros(dim,1);
 %u=ones(dim,1)*C;
-%[x,y] = pr_loqo2(c, H, A, b, l, u)
+%[x,y] = pr_loqo2(c, H, A, b, l, u);
+%alpha = x;
 
-% 1/2*x'*H*x + f'*x 
-% A*x ≤ b
-% [ ] *x ≤ [C,..,C]'
-% Aeq*x = beq
 H=-K;
 f=diag(K);
 l=zeros(dim,1);
 u=ones(dim,1)*C;
 Aeq = ones(dim,1)';
-beq = [1];
-alpha = quadprog(H,f,[],[],Aeq,beq,l,u)
+beq = ones(1);
+alpha = quadprog(H,f,[],[],Aeq,beq,l,u);

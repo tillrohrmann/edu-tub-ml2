@@ -124,47 +124,11 @@ Furthermore by setting $v=1$, $\boldsymbol{u} = \begin{bmatrix}1\\ \vdots \\ 1\e
 	0 \le \alpha_i \le C &\Leftrightarrow& l_i \le \alpha_i \le m_i
 \end{eqnarray*}
 
-\section{Implementation} see attached matlab implementation. \newline
-$pr\_loqo2$ is running into small value (close to zero) issues. Tested with 64Bit/Win7/(Matlab 2012 b/2013a). quadprog() worked instead.
+\section{Implementation} see attached matlab implementation.
 
 \section{Result of the One-class SVM vs. hackers}
 
-With the help of the slack-variables $\xi_i$ the One-class-SVM try to fit best on the normal data in order to find the anormal hacker activities. Using an appropriate value of $C$ is important to distinguish hacker activities from normal ones.
-The following plot shows the number of hacker activities found if $C$ ist changed, starting with $C=1$ and halved in each step.
-
-\includegraphics[width=0.7\textwidth]{images/plot_found_hackers.png}
-
-Maybe an appropriate value for may $C=0.002$. This value is applied to test data to find hacker activities on event-logs.
-
-\subsection*{Hacker atttacks found}
-
-\includegraphics[width=\textwidth]{images/plot_testdata.png}
-
-\subsection*{Explicit position of hacker attacks}
-    37
-   154
-   188
-   228
-   326
-   358
-   402
-   403
-   484
-   509
-   579
-   583
-   658
-   683
-   705
-   716
-   755
-   771
-   836
-   881
-   893
-   902
-   910
-   990
-
+With the help of the slack-variables $\xi$ the One-class-SVM try to fit best on the normal data in order to find the anormal hacker activities. Using an appropriate value of $C$ is important to distinguish hacker activities from normal ones.
+The following diagram shows the number of hacker activities if $C$ ist changed incrementally.
 
 \end{document}

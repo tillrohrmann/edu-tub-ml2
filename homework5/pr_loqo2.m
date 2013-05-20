@@ -19,14 +19,33 @@ function [x,y] = pr_loqo2(c, H, A, b, l, u)
 %             
 %for a documentation see R. Vanderbei, LOQO: an Interior Point Code
 %                        for Quadratic Programming
-margin = 0.05; bound  = 100; sigfig_max = 8; counter_max = 50;
-[m, n] = size(A); H_x    = H; H_diag = diag(H);
-b_plus_1 = 1; c_plus_1 = norm(c) + 1;
-one_x = -ones(n,1); one_y = -ones(m,1);
-for i = 1:n H_x(i,i) = H_diag(i) + 1; end;
-H_y = eye(m); c_x = c; c_y = 0;
-R = chol(H_x); H_Ac = R \ ([A; c_x'] / R)';
-H_A = H_Ac(:,1:m); H_c = H_Ac(:,(m+1):(m+1));
+margin = 0.05; 
+bound  = 100; 
+sigfig_max = 8; 
+counter_max = 50;
+[m, n] = size(A); 
+H_x    = H; 
+H_diag = diag(H);
+b_plus_1 = 1; 
+c_plus_1 = norm(c) + 1;
+one_x = -ones(n,1); 
+one_y = -ones(m,1);
+
+for i = 1:n 
+    H_x(i,i) = H_diag(i) + 1; 
+end;
+
+eig(H_x)
+
+H_y = eye(m); 
+c_x = c; 
+c_y = 0;
+R = chol(H_x); 
+H_Ac = R \ ([A; c_x'] / R)';
+
+H_A = H_Ac(:,1:m); 
+H_c = H_Ac(:,(m+1):(m+1));
+
 A_H_A = A * H_A; A_H_c = A * H_c;
 H_y_tmp = (A_H_A + H_y); y = H_y_tmp \ (c_y + A_H_c);
 x = H_A * y - H_c; g = max(abs(x - l), bound);
