@@ -20,16 +20,16 @@ dim=length(K);
 %             y : Objective value
 %ERROR: chol works not propperly on very slow (close to zero) data
 %c=diag(K)';
-%H=-K;
-%b=1;
+%H=K*2;
+%b=-1;
 %A=ones(dim,1);
 %l=zeros(dim,1);
 %u=ones(dim,1)*C;
 %[x,y] = pr_loqo2(c, H, A, b, l, u);
 %alpha = x;
 
-H=-K;
-f=diag(K);
+H=2*K;
+f=-diag(K);
 l=zeros(dim,1);
 u=ones(dim,1)*C;
 Aeq = ones(dim,1)';
