@@ -1,0 +1,165 @@
+\documentclass[a4paper, 12pt, titlepage]{article}
+
+% Including needed packages
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+
+
+\newcommand{\norm}[1]{\lVert#1\rVert}
+
+\title
+{{\em Machine learning 2}\\
+Exercise sheet 6}
+\author{FLEISCHMANN Kay, Matrnr: 352247\\
+	ROHRMANN Till, Matrnr: 343756}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{String Kernels}
+
+Given the kernel function
+
+\begin{eqnarray*}
+	k(\cdot,\cdot) : \mathcal{A}^{\star} \times \mathcal{A}^{\star} &\rightarrow& \mathbb{R}\\
+	(x,y) &\mapsto& \sum_{s\in\mathcal{A}^{\star}} \#(s \subseteq x) \cdot \#(s\subseteq y) \cdot w(s)
+\end{eqnarray*}
+
+\subsection{Unweighted bag-of-words}
+\label{section:bag}
+$w(s)=1$ iff $s$ is a word of the target language $L$.
+
+\begin{proof}[Prove that the unweighted bag-of-words is a kernel function]
+
+Let $K=(k(x_i,x_j)_{i,j}$ be the kernel matrix produced by the strings $x_i$ with $i\in [1,N]$.
+Let $v \in \mathbb{R}^{N}$ be an arbitrary vector.
+
+\begin{eqnarray*}
+	\sum_{i,j=1}^{N} v_i k(x_i,x_j) v_j &=& \sum_{s\in\mathcal{A}^\star} w(s) \sum_{i,j=1}^N v_i \#(s\subseteq x_i)\cdot \#(s\subseteq x_j) v_j \\
+	&=& \sum_{s\in\mathcal{A}^\star} w(s) \underbrace{\left( \sum_{i=1}^N v_i \cdot \#(s\subseteq x_i) \right)^2}_{\ge 0} \\
+	&\ge& 0
+\end{eqnarray*}
+
+Thus the function $k(\cdot,\cdot)$ is positive semi-definite.
+
+\end{proof}
+
+\subsection{Inverse document frequency}
+
+$w(s) = IDF(s) = \log N - \log DF(s)$ with $DF(s) = \#\{k: 1\le k \le N, s\subseteq D_k\}$.
+
+
+\begin{proof}[Prove that the function $k(\cdot,\cdot)$ with the inverse document frequency is a kernel function.]
+
+
+Let $K=(k(x_i,x_j)_{i,j}$ be the kernel matrix produced by the strings $x_i$ with $i\in [1,N]$.
+Let $v \in \mathbb{R}^{N}$ be an arbitrary vector.
+
+\begin{eqnarray*}
+	\sum_{i,j=1}^{N} v_i k(x_i,x_j) v_j &=& \sum_{s\in\mathcal{A}^\star} w(s) \sum_{i,j=1}^N v_i \#(s\subseteq x_i)\cdot \#(s\subseteq x_j) v_j \\
+	&=& \sum_{s\in\mathcal{A}^\star} \underbrace{\log \left( \frac{N}{DF(s)} \right)}_{\ge 0} \underbrace{\left( \sum_{i=1}^N v_i \cdot \#(s\subseteq x_i) \right)^2}_{\ge 0} \\
+	&\ge& 0
+\end{eqnarray*}
+
+Thus the function $k(\cdot,\cdot)$ is positive semi-definite.
+
+\end{proof}
+
+\subsection{$n$-spectrum kernel}
+
+$w(s)=1$ iff $|s|=n$.
+\begin{proof}[Prove that the $n$-spectrum kernel is indeed a kernel]
+
+Defining our target language as $L=A^n$ and using the results from subsection \ref{section:bag} leads directly to the assumption.
+
+\end{proof}
+
+\subsection{Blended $n$-spectrum kernel}
+
+$w(s)=1$ iff $|s| \le n$.
+
+\begin{proof}[Prove that the blended $n$-spectrum kernel is indeed a kernel]
+
+Defining our target language $L=\bigcup_{i=0}^n A^i$ and using the results from subsection \ref{section:bag} leads directly to the assumption.
+
+\end{proof}
+
+\subsection{Kernel matrices}
+
+Let $n=3$ and the data set is
+\begin{displaymath}
+	\text{ananas, anna, natter, otter, otto}
+\end{displaymath}
+
+\subsubsection{$n$-spectrum kernel}
+
+\begin{displaymath}
+	K_{spec} = \bordermatrix{
+		& \text{ananas} & \text{anna} & \text{natter} & \text{otter} & \text{otto} \cr
+		\text{ananas} & 6 & 0 & 0 & 0 & 0 \cr
+		\text{anna} & 0 & 2 & 0 & 0 & 0 \cr
+		\text{natter} & 0 & 0 & 4 & 2 & 0 \cr
+		\text{otter} & 0 & 0 & 2 & 3 & 1 \cr
+		\text{otto}  & 0 & 0 & 0 & 1 & 2
+	}
+\end{displaymath}
+
+\subsubsection{Blended $n$-spectrum kernel}
+
+\begin{displaymath}
+	K_{bspec} = \bordermatrix{
+		& \text{ananas} & \text{anna} & \text{natter} & \text{otter} & \text{otto} \cr
+		\text{ananas} & 29 & 14 & 7 & 0 & 0 \cr
+		\text{anna} & 14 & 12 & 5 & 0 & 0 \cr
+		\text{natter} & 7 & 5 & 17 & 11 & 5 \cr
+		\text{otter} & 0 & 0 & 11 & 14 & 9 \cr
+		\text{otto}  & 0 & 0 & 5 & 9 & 13
+	}
+\end{displaymath}
+
+\section{Tree kernels}
+
+\begin{proof}[Prove: A string $x$ contains $\mathcal{O}(|x|^2)$ substrings]
+
+The number of all substrings of a string $x$ is the sum of all substrings with length $1$, length $2$, $\ldots$, length $|x|$. Thus
+
+\begin{eqnarray}
+	\#_{\text{substrings}}(x) &=& \sum_{l=1}^{|x|} \#_{\text{substrings of length }l}(x) \nonumber\\
+	&\le& \sum_{l=1}^{|x|} |x|-l+1 \label{eq:ineq}
+\end{eqnarray}
+
+The inequality \eqref{eq:ineq} holds because there at most $|x|-l+1$ substrings of length $l$ in a string of length $|x|$.
+There might also be fewer, if substrings occur mutliple times.
+
+\begin{eqnarray*}
+	\eqref{eq:ineq} &=& |x|^2 - \frac{(|x|+1)|x|}{2} + |x|\\
+		&=& \frac{|x|^2+|x|}{2}\\
+		&\in& \mathcal{O}(|x|^2)
+\end{eqnarray*}
+
+\end{proof}
+
+\begin{proof}[Prove: A substring $w$ of $x$ can be reached in $\mathcal{O}(|w|)$ in the suffix tree of $x$.]
+
+If the string $x$ contains the substring $w$ then there is also a suffix starting with $w$.
+Thus, by traversing the suffix tree, following the edges with the corresponding letter, we'll find the substring $w$ at the depth $|w|$.
+If the substring $w$ is not contained in $x$, then at latest after $|w|-1$ steps there is no edge anymore to follow, indicating that there is no substring $w$.
+
+\end{proof}
+
+\begin{proof}[Prove: The suffix tree of $x$ can be stored in $\mathcal{O}(|x|)$ space.]
+	In a suffix tree each leaf denotes exactly one suffix.
+	Since there are exactly $|x|$ suffixes in a string of length $|x|$, each suffix tree has $|x|$ leaves.
+	Furthermore, each interior node, except for the root which can also have only one child, has at least 2 children.
+	Thus, there can only be a maximum of $|x|-1$ interior nodes, because every interior nodes adds at least two leaves to the tree while consuming one open connection of another interior node.
+	Consequently, the maximum number of nodes is $|x|-1+|x|+1=2|x| \in \mathcal{O}(|x|)$ and therefore we can store the suffix tree in linear space.
+\end{proof}
+
+\end{document}
