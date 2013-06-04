@@ -35,8 +35,6 @@ for i = 1:n
     H_x(i,i) = H_diag(i) + 1; 
 end;
 
-eig(H_x)
-
 H_y = eye(m); 
 c_x = c; 
 c_y = 0;

@@ -8,7 +8,7 @@ load('stud-data.mat')
  
  % compute the alphas
  disp('learning one-class-SVM...')
- C = 0.002; % adjust C 
+ C = 0.0002 ; % adjust C 
  alpha = oneclass(KR, C);
  
  % compute anomaly scores
