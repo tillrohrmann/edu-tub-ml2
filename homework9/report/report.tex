@@ -53,10 +53,10 @@ The Hidden-Markov-chain for $A$ and $B$ looks like the following4
   \tikzstyle{observation}=[rectangle,thick,draw=black!75,
   			  fill=black!20,minimum size=10mm]
   			  
-  \node[state,initial] (x1)   {x1}; 
-  \node[state] (x2) [right=4cm of x1] {x2};
-  \node[observation] (y1) [below=4cm of x1] {y1=heads};
-  \node[observation] (y2) [right=4cm of y1] {y2=tails};
+  \node[state,initial] (x1)   {$x_1$};
+  \node[state] (x2) [right=4cm of x1] {$x_2$};
+  \node[observation] (y1) [below=4cm of x1] {$y_1=heads$};
+  \node[observation] (y2) [right=4cm of y1] {$y_2=tails$};
 
   \path[->] (x1) edge [bend left] node {0.9} (x2);
   \path[->] (x2) edge [bend left] node {0.5} (x1);
@@ -120,9 +120,9 @@ The result for $P(x|y_1=tails,y_2=tails)$ follows as
               & State-sequence &  $P(x|y_1=tails,y_2=tails)$ & \\
 \hline
 & & & \\
-1 & $x=x_1,x_1$ & $\frac{0.016 \cdot 0.1}{0.196} = 0.008163265$ \\
+1 & $x=x_1,x_1$ & $\frac{0.016 \cdot 0.1}{0.196} = 0.0081$ \\
 & & & \\
-2 & $x=x_1,x_2$ & $\frac{0.216 \cdot 0.09}{0.196} =0.099183673$ \\
+2 & $x=x_1,x_2$ & $\frac{0.216 \cdot 0.9}{0.196} =0.9918$ \\
 & & & \\
 3 & $x=x_2,x_1$ & $\frac{0\cdot 0.45}{0.196} = 0$ \\
 & & & \\
