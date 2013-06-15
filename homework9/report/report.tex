@@ -90,23 +90,28 @@ Because of the statistical independence, we can write
 \begin{equation}
   P(y_1=tail,y_2=tail|x_1,x_2) = \pi_1 \cdot P(y_1|x_1) \cdot P(x_1) \cdot P(y_2|x_2) \cdot P(x_2)
 \end{equation}
+In general, for the first two states which should produce the observation $(tails,tails)$ we can write
 
-All possible sequences with length $2$ (with two transitions) are
+\begin{equation}
+  P(y_1=tail,y_2=tail|x_1,x_2) = \pi_i \cdot P(y_1|x_i) \cdot P(x_i) \cdot P(y_2|x_i) \cdot P(x_i)
+\end{equation}
+
+All possible sequences with length $2$ are
 
 \begin{tabular}{l*{3}{c}r}
               & State transitions & $P(x)$ & $P(y_1=tails,y_2=tails|x) $ \\
 \hline
-1 & $[x_1] \rightarrow x_1 \rightarrow x_1$ & $P(x_1,x_1,x_1)= 1\cdot0.1\cdot0.1=0.01 $ & $0.1\cdot0.4\cdot 0.1\cdot0.4=0.0016$\\
-2 & $[x_1] \rightarrow x_1 \rightarrow x_2$ & $P(x_1,x_1,x_2)= 1\cdot0.1\cdot0.9=0.09 $ & $0.1\cdot 0.4 \cdot 0.9 \cdot 0.6=0.0216 $ \\
-3 & $[x_1] \rightarrow x_2 \rightarrow x_1$ & $P(x_1,x_2,x_1)= 1\cdot0.9\cdot0.5=0.45 $ & $0.9 \cdot 0.6 \cdot 0.5 \cdot 0.4 = 0.108 $\\
-4 & $[x_1] \rightarrow x_2 \rightarrow x_2$ & $P(x_1,x_2,x_2)= 1\cdot0.9\cdot0.5=0.45 $ & $0.9 \cdot 0.6 \cdot 0.5 \cdot 0.6 = 0.162$
+1 &  $x_1 \rightarrow x_1$ & $P(x_1,x_1)= 1\cdot0.1=0.1$ & $ 1\cdot0.4\cdot0.1\cdot0.4=0,016 $\\
+2 &  $x_1 \rightarrow x_2$ & $P(x_1,x_2)= 1\cdot0.9=0.9$ & $ 1\cdot0.4\cdot0.9\cdot0.6=0,216 $ \\
+3 &  $x_2 \rightarrow x_1$ & $P(x_2,x_1)= 0\cdot0.5=0$ & $ 0 $ \\
+4 &  $x_2 \rightarrow x_2$ & $P(x_2,x_2)= 0\cdot0.5=0$ & $ 0 $
  \end{tabular}
 
 \begin{align}
   P(y_1,y_2) &= \sum_{x} P(y_1,y_2|x) P(x)  \\
 	     &= \sum_{x} P(y_1=tails,y_2=tails|x) P(x) \\
-	     &= 0.0016 \cdot 0.01 + 0.0216 \cdot 0.09 + 0.0108 \cdot 0.45 + 0.162 \cdot 0.45 \\
-	     &= 0.07972
+	     &= 0.016 \cdot 0.1 + 0.216 \cdot 0.9 \\
+	     &= 0.196
 \end{align}
 
 The result for $P(x|y_1=tails,y_2=tails)$ follows as
@@ -115,13 +120,13 @@ The result for $P(x|y_1=tails,y_2=tails)$ follows as
               & State-sequence &  $P(x|y_1=tails,y_2=tails)$ & \\
 \hline
 & & & \\
-1 & $x=x_1,x_1$ & $\frac{0.0016 \cdot 0.01}{0.07972} = 0.002007025$ \\
+1 & $x=x_1,x_1$ & $\frac{0.016 \cdot 0.1}{0.196} = 0.008163265$ \\
 & & & \\
-2 & $x=x_1,x_2$ & $\frac{0.0216 \cdot 0.09}{0.07972} = 0.024385349$ \\
+2 & $x=x_1,x_2$ & $\frac{0.216 \cdot 0.09}{0.196} =0.099183673$ \\
 & & & \\
-3 & $x=x_2,x_1$ & $\frac{0.108 \cdot 0.45}{0.07972} = 0.609633718$ \\
+3 & $x=x_2,x_1$ & $\frac{0\cdot 0.45}{0.196} = 0$ \\
 & & & \\
-4 & $x=x_2,x_2$ & $\frac{0.0162 \cdot 0.45}{0.07972} = 0.091445058 $ 
+4 & $x=x_2,x_2$ & $\frac{0 \cdot 0.45}{0.196} = 0 $ 
  \end{tabular}
 
 
