@@ -45,7 +45,7 @@ B=
  \end{pmatrix}
 \]
 
-\subsection{a. Draw the graph of the model}
+\subsection*{a. Draw the graph of the model}
 The Hidden-Markov-chain for $A$ and $B$ looks like the following4
 
 \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
@@ -72,14 +72,15 @@ The Hidden-Markov-chain for $A$ and $B$ looks like the following4
   
 Because of $\pi = (1 | 0)$ all state-sequences start with the initial state $x_1$.
   
-\subsection{b.}
+\subsection*{b.}
 
 
 \textit{We interpret the above as a model for an experiment with two hidden (unfair) coins and two visible coins. Describe such an experiment which can be modelled by the Markov model given above. Here, heads should correspond to the first indices in $A$, $B$, $\pi$, heads to the second.} \newline \newline
-A man is standing behind an curtain and is throwing two unfair coins, just one each time. The guy in front of the curtain just get the observation wheter he sees heads or tails. 
 
-\newpage
-\subsection{c.}
+A guy is standing behind an curtain and is throwing two unfair coins, just one each time but starts always with the first one. A second guy in front of the curtain just get the information about the observed heads or tails as a sequence. The task of the second guy is to find the most likely sequence of the thrown coins.
+
+
+\subsection*{c.}
 
 Given the bayes rule:
 \begin{equation}
@@ -129,7 +130,11 @@ The result for $P(x|y_1=tails,y_2=tails)$ follows as
 4 & $x=x_2,x_2$ & $\frac{0 \cdot 0.45}{0.196} = 0 $ 
  \end{tabular}
 
+ 
+\subsection*{f.}
+Prove in the scenario of $(e)$ and the assumptions of the exercise: if $N \rightarrow \infty$, then the sample observation frequency of heads/tails at fixed position $n$ converges, in probability and entry-wise, to the vector $\pi \cdot A^n \cdot B$.
 
+\
 
 
 
