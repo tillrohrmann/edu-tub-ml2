@@ -7,13 +7,18 @@
 % Generate 1000 times a random state-sequence and observations
 N=1000;
 len=20;
-X=zeros(N,1);
-tails=0;
-heads=0;
+tails=zeros(len,N);
+heads=zeros(len,N);
 for i=1:N
-    [states, output] = hidden_coins(len);
-    tails=tails+sum(output==2)/len;
-    heads=heads+sum(output==1)/len;
-    X(i)=heads/tails;
+    [~, output] = hidden_coins(len);
+    tails(:,i)=output==2;
+    heads(:,i)=output==1;
 end
-plot(X);
+
+means = mean(heads,2);
+stds = std(heads,0,2)/sqrt(N);
+
+errorbar(1:len,means,stds,'o');
+title('Relative freq. to observe heads plus its standard deviation');
+xlabel('n');
+ylabel('Relative freq.');

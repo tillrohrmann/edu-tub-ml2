@@ -10,6 +10,7 @@
 \usepackage{float}
 \usepackage{pgf}
 \usepackage{tikz}
+\usepackage{dsfont}
 
 \newcommand{\norm}[1]{\lVert#1\rVert}
 \usetikzlibrary{automata,positioning}
@@ -26,7 +27,7 @@ Exercise sheet 9}
 \maketitle
 
 \section{Hidden Markov Models}
-Let $A_{i,j}$ the transition matrix between hidden states $x_i$ and $x_j$. $B_{i,j}$ is the the probability, beeing in state $i$ to overserve $y_j$.
+Let $A_{i,j}$ the transition matrix between hidden states $x_i$ and $x_j$. $B_{i,j}$ is the the probability, beeing in state $x_i$ to observe $y_j$.
 The following matrices $A$ and $B$ describe two hidden states and two possible observations.
 
 \[
@@ -84,58 +85,117 @@ A guy is standing behind an curtain and is throwing two unfair coins, just one e
 
 Given the bayes rule:
 \begin{equation}
-   P(x|y_1=tails,y_2=tails) =  \frac{P(y_1=tails,y_2=tails|x)P(x)}{P(y_1=tails,y_2=tails)}
+   P(X|Y(1)=tails,Y(2)=tails) =  \frac{P(Y(1)=tails,Y(2)=tails|X)P(X)}{P(Y(1)=tails,Y(2)=tails)}
 \end{equation}
 
 Because of the statistical independence, we can write
-\begin{equation}
-  P(y_1=tail,y_2=tail|x_1,x_2) = \pi_1 \cdot P(y_1|x_1) \cdot P(x_1) \cdot P(y_2|x_2) \cdot P(x_2)
-\end{equation}
-In general, for the first two states which should produce the observation $(tails,tails)$ we can write
+\begin{eqnarray}
+  P(Y(1),Y(2)|X(1),X(2)) &=& P(Y(1)|X(1)) \cdot P(Y(2)|X(2))
+\end{eqnarray}
 
-\begin{equation}
-  P(y_1=tail,y_2=tail|x_1,x_2) = \pi_i \cdot P(y_1|x_i) \cdot P(x_i) \cdot P(y_2|x_i) \cdot P(x_i)
-\end{equation}
+Furthermore we have
+\begin{eqnarray}
+	P(X(1)=x_i,X(2)=x_j)&=& P(X(2)=x_j\mid X(1)=x_i) \cdot P(X(1) = x_i) \\
+	&=& B_{i,j} \cdot \pi_i
+\end{eqnarray}
 
 All possible sequences with length $2$ are
 
 \begin{tabular}{l*{3}{c}r}
-              & State transitions & $P(x)$ & $P(y_1=tails,y_2=tails|x) $ \\
+              & State sequence & $P(X)$ & $P(Y(1)=tails,Y(2)=tails|X) $ \\
 \hline
-1 &  $x_1 \rightarrow x_1$ & $P(x_1,x_1)= 1\cdot0.1=0.1$ & $ 1\cdot0.4\cdot0.1\cdot0.4=0,016 $\\
-2 &  $x_1 \rightarrow x_2$ & $P(x_1,x_2)= 1\cdot0.9=0.9$ & $ 1\cdot0.4\cdot0.9\cdot0.6=0,216 $ \\
-3 &  $x_2 \rightarrow x_1$ & $P(x_2,x_1)= 0\cdot0.5=0$ & $ 0 $ \\
-4 &  $x_2 \rightarrow x_2$ & $P(x_2,x_2)= 0\cdot0.5=0$ & $ 0 $
+1 &  $x_1 \rightarrow x_1$ & $P(X(1)=x_1,X(2)=x_1)=0.1$ & $ 0.8\cdot 0.8=0.64 $\\
+2 &  $x_1 \rightarrow x_2$ & $P(X(1)=x_1,X(2)=x_2)=0.9$ & $ 0.8\cdot 0.6= 0.48 $ \\
+3 &  $x_2 \rightarrow x_1$ & $P(X(1)=x_2,X(2)=x_1)= 0$ & $ 0.6 \cdot 0.8 = 0.48 $ \\
+4 &  $x_2 \rightarrow x_2$ & $P(X(1)=x_2,X(2)=x_2)= 0$ & $ 0.6 \cdot 0.6 = 0.36 $
  \end{tabular}
 
 \begin{align}
-  P(y_1,y_2) &= \sum_{x} P(y_1,y_2|x) P(x)  \\
-	     &= \sum_{x} P(y_1=tails,y_2=tails|x) P(x) \\
-	     &= 0.016 \cdot 0.1 + 0.216 \cdot 0.9 \\
-	     &= 0.196
+  P(Y(1)=y_2,Y(2)=y_2) &= \sum_{X \in S^2} P(Y(1)=y_2,Y(2)=y_2|X) P(X)  \\
+	     &= \sum_{X \in S^2} P(Y(1)=y_2,Y(2)=y_2|X) P(X) \\
+	     &= 0.64\cdot 0.1 + 0.48\cdot 0.9 + 0.48 \cdot 0 + 0.36\cdot 0 \\
+	     &= 0.496
 \end{align}
 
-The result for $P(x|y_1=tails,y_2=tails)$ follows as
+The result for $P(X \mid Y(1)=tails,Y(2)=tails)$ follows as
 
 \begin{tabular}{l*{2}{c}r}
-              & State-sequence &  $P(x|y_1=tails,y_2=tails)$ & \\
+              & State sequence &  $P(X|Y(1)=tails,Y(2)=tails)$ & \\
 \hline
 & & & \\
-1 & $x=x_1,x_1$ & $\frac{0.016 \cdot 0.1}{0.196} = 0.0081$ \\
+1 & $X=X(1)=x_1,X(2)=x_1$ & $\frac{0.64 \cdot 0.1}{0.496} \approx 0.129$ \\
 & & & \\
-2 & $x=x_1,x_2$ & $\frac{0.216 \cdot 0.9}{0.196} =0.9918$ \\
+2 & $X=X(1)=x_1,X(2)=x_2$ & $\frac{0.48 \cdot 0.9}{0.496} \approx 0.871$ \\
 & & & \\
-3 & $x=x_2,x_1$ & $\frac{0\cdot 0.45}{0.196} = 0$ \\
+3 & $X=X(1)=x_2,X(2)=x_1$ & $\frac{0.48\cdot 0}{0.496} = 0$ \\
 & & & \\
-4 & $x=x_2,x_2$ & $\frac{0 \cdot 0.45}{0.196} = 0 $ 
+4 & $X=X(1)=x_2,X(2)=x_2$ & $\frac{0.36 \cdot 0}{0.496} = 0$ 
  \end{tabular}
 
  
 \subsection*{f.}
 Prove in the scenario of $(e)$ and the assumptions of the exercise: if $N \rightarrow \infty$, then the sample observation frequency of heads/tails at fixed position $n$ converges, in probability and entry-wise, to the vector $\pi \cdot A^n \cdot B$.
 
-\
+\begin{proof}
 
+Given an initial distribution, the probability that we see heads in the sequence of observations $Y$ at position $k$ is $\Pr(Y(k)=y_1)=(\pi \cdot A^k \cdot B)_1$.
+Thus we see tails at the position $k$ with probability $\Pr(Y(k)=y_2)=(\pi \cdot A^k \cdot B)_2 = 1- (\pi \cdot A^k \cdot B)_1$.
 
+Running $N$ times the experiment with the same initial distribution, we obtain $Y_i$ observation sequences with $1\le i \le N$.
+It holds that for all time points $t$ the observations $Y_i(t)$ of the different run of the experiment are conditonally independent.
+In order to calculate the observations frequency of heads we calculate for each position $k$ with $1\le k \le n$ the empirical frequency:
 
+\begin{eqnarray}
+	heads_{emp}(k) &=& \frac{1}{N}\sum_{i=1}^N \mathds{1}_{Y_i(k)=y_1} \label{eq:heads}
+\end{eqnarray}
+
+The term $\mathds{1}_{Y_i(k)=y_1}$ can be considered a Bernoulli variable whose probability to be $1$ is
+\begin{eqnarray*}
+	\Pr(\mathds{1}_{Y_i(k)=y_1}=1) &=& (\pi \cdot A^k \cdot B)_1
+\end{eqnarray*}
+and its probability to be $0$ is
+\begin{eqnarray*}
+	\Pr(\mathds{1}_{Y_i(k)=y_1}=0) &=& 1-(\pi \cdot A^k \cdot B)_1\\
+	&=& (\pi \cdot A^k \cdot B)_2
+\end{eqnarray*}
+
+So we can observe that equation \eqref{eq:heads} is nothing else than the average of i.i.d. Bernoulli variables.
+This means that
+\begin{eqnarray*}
+	\mathds{E}( heads_{emp}(k) ) &=& (\pi \cdot A^k \cdot B)_1
+\end{eqnarray*}
+
+Furthermore by using the Chebyshev inequality we obtain for any $\epsilon > 0$.
+\begin{eqnarray}
+	\Pr(\left | heads_{emp}(k) - \mathds{E}( heads_{emp}(k) ) \right | \ge \epsilon ) &\le & \frac{Var(\mathds{1}_{Y_i(k)=y_1})}{N\epsilon^2} \nonumber\\
+	\Pr(\left | heads_{emp}(k) - (\pi \cdot A^k \cdot B)_1 \right | \ge \epsilon ) &\le & \frac{(\pi \cdot A^k \cdot B)_1\cdot (\pi \cdot A^k \cdot B)_2}{N\epsilon^2} \label{eq:final}
+\end{eqnarray}
+
+Since $(\pi \cdot A^k \cdot B)_1\cdot (\pi \cdot A^k \cdot B)_2$ is finite equation \eqref{eq:final} converges against $0$ for $N\rightarrow \infty$:
+\begin{eqnarray}
+	\lim_{N\rightarrow \infty} \Pr(\left | heads_{emp}(k) - (\pi \cdot A^k \cdot B)_1 \right | \ge \epsilon ) &\le& \lim_{N\rightarrow \infty} \frac{(\pi \cdot A^k \cdot B)_1\cdot (\pi \cdot A^k \cdot B)_2}{N\epsilon^2} \nonumber \\
+	&=& 0 \label{eq:headsfinal}
+\end{eqnarray}
+
+The same holds for
+
+\begin{eqnarray}
+	\lim_{N\rightarrow \infty} \Pr(\left | tails_{emp}(k) - (\pi \cdot A^k \cdot B)_2 \right | \ge \epsilon ) &\le& 0 \label{eq:tailsfinal}
+\end{eqnarray}
+
+with
+
+\begin{eqnarray*}
+	tails_{emp}(k) &=& \frac{1}{N}\sum_{i=1}^N \mathds{1}_{Y_i(k)=y_2}
+\end{eqnarray*}
+
+and
+\begin{eqnarray*}
+	\Pr(\mathds{1}_{Y_i(k)=y_2}=1) &=& (\pi \cdot A^k \cdot B)_2
+\end{eqnarray*}
+
+if we apply the same reasoning.
+With equations \eqref{eq:headsfinal} and \eqref{eq:tailsfinal} we have shown that the observed frequencies $heads_{emp}(k)$ and $tails_{emp}(k)$ converge in probability against $\pi \cdot A^k \cdot B$.
+
+\end{proof}
 \end{document}
