@@ -40,7 +40,4 @@ for t=lenT:-1:2
     x(t-1)=Z(t-1);
 end
 
-%T1
-%T2
-
 end
