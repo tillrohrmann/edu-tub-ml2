@@ -38,16 +38,19 @@ for i=1:length(l)
     corr_viterbi = sum(viterbi_results) / N;
     corr_random = sum(random_results) / N;
 
+    total_corr_viterbi = sum( sum(viterbi_results)) / (N*l(i));
+    total_random_viterbi = sum( sum(random_results)) / (N*l(i));
+    
     subplot(length(l),1,i); 
     hold on;
     plot(corr_viterbi)
     
-    title(['sequence length l= ' int2str( l(i) )])
+    title(['sequence length l= ' int2str( l(i) ) ', total viterbi: ' num2str(total_corr_viterbi) ', total random: ' num2str(total_random_viterbi)])
     
 
     plot(corr_random,'red');
-    hold off;
-    
     legend('Viterbi','Random')
+
+    hold off;
     
 end

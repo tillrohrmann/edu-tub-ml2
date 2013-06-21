@@ -6,6 +6,7 @@ function [states,output] = hidden_coins( n )
 trans = [.1 0.9;0.5 0.5];
 emis = [0.2 0.8; 0.4 0.6];
 
+
 states = zeros(1,n);
 output = zeros(1,n);
 
