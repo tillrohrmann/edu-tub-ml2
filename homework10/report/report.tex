@@ -46,32 +46,15 @@ B=
  \end{pmatrix}
 \]
 
-The Hidden-Markov-chain for $A$ and $B$ looks like the following4
+\subsection*{19.a Implementation of Viterbi algorithm}
+\subsection*{19.b Experiment results}
 
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
-  \tikzstyle{state}=[circle,thick,draw=blue!75,fill=blue!20,minimum size=6mm]
-  \tikzstyle{observation}=[rectangle,thick,draw=black!75,
-  			  fill=black!20,minimum size=10mm]
-  			  
-  \node[state,initial] (x1)   {$x_1$};
-  \node[state] (x2) [right=4cm of x1] {$x_2$};
-  \node[observation] (y1) [below=4cm of x1] {$y_1=heads$};
-  \node[observation] (y2) [right=4cm of y1] {$y_2=tails$};
+Perform the following experiment: for the Hidden Markov Model of sheet 9, that is, generate sequences of length $l= 5, 10$ and $20;$ for each length generate a number of $N = 1000$ pairs of output sequences and hidden state sequences. On these sequences, for each length , compare $(i)$ the Viterbi algorithm and $(ii)$ the algorithm which randomly uniformly estimates a state sequence by (i) plotting for each length , and all integers $1 \le k \le l$ , the relative frequency of the algorithm correctly estimating the hidden state at position $k$ (this is three plots, one for each , and in each plot two curves), and $(ii)$ for each length , computing the relative frequency of both algorithms succeeding in completely identifying the state sequence correctly (this is two numbers for each of the three ).
 
-  \path[->] (x1) edge [bend left] node {0.9} (x2);
-  \path[->] (x2) edge [bend left] node {0.5} (x1);
-  \path[->] (x1) edge [loop above] node {0.1} (x1);
-  \path[->] (x2) edge [loop above] node {0.5} (x2);
-
-  \path[->] (x1) edge [bend left] node {0.2} (y1);
-  \path[->] (x1) edge [bend left] node {0.8} (y2);
-
-  \path[->] (x2) edge [bend left] node {0.4} (y1);
-  \path[->] (x2) edge [bend left] node {0.6} (y2);
-\end{tikzpicture}
-
-\subsection*{(a) Implementation of Viterbi algorithm} 
-\subsection*{(b) Experiment} 
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{images/experiment_results.png}
+	\caption{This plot compare the viterbi results with the funktion which randomly generate the hidden states. The plot shows the relative correct detected hidden states with diffrent settings in the experiment. }
+\end{figure}
 
 
 \end{document}
