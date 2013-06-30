@@ -1,0 +1,252 @@
+\documentclass[a4paper, 11pt, titlepage]{article}
+
+% Including needed packages
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{dsfont}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title
+{{\em Machine learning 2}\\
+Exercise sheet 11}
+\author{FLEISCHMANN Kay, Matrnr: 352247\\
+	ROHRMANN Till, Matrnr: 343756}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{section}{19}
+\section{Convex optimization}
+
+\subsection*{(a)}
+
+Let $X\in \mathbb{R}^{m\times n}$, $b\in \mathbb{R}^m$. Then write
+\begin{eqnarray*}
+	\mathcal{C}(X,b)&:=& \{w\in\mathbb{R}^n : X\cdot w \ge b \}
+\end{eqnarray*}
+
+\paragraph{Describe the set $\mathcal{C}(X,b)$}
+$X\cdot w \ge b$ is a system of linear inequalities.
+The set $\mathcal{C}(X,b)$ is the set of solutions to this system.
+If we consider each row of $X$ being a normal vector of some hyperplane in the $\mathbb{R}^n$, then the equation $X_i\cdot w \ge b_i$ with $X_i$ being the $i$th row of $X$ defines an half space of $\mathbb{R}^n$.
+Thus, each vector $w$ which has a greater distance than $b_i$ from a hyperplane, defined by the normal vector $X_i$ and going through the origin, fulfills the $i$th linear inequality.
+In this case the distance can be positive and negative in order to distinguish on which side of the hyperplane the point is.
+In order to be in accordance with all inequalities, a possible solution has to be element of all defined half spaces.
+Consequently, the set $\mathcal{C}(X,b)$ is the intersection of all half spaces defined by the rows of $X$ and the respective offset terms $b$.
+
+\paragraph{Prove that $\mathcal{C}(X,b)$ is always a convex subset of $\mathcal{R}^n$}
+
+\begin{proof}
+	Let $c,d \in \mathcal{C}(X,b)$ and $c\not = d$.
+	$\mathcal{C}(X,b)$ is a convex set iff for all $\mu \in [0,1]$ holds that $\mu\cdot c + (1-\mu)\cdot d \in \mathcal{C}(X,b)$.
+	
+	Since $c,d \in \mathcal{C}(X,b)$, $X_i\cdot c \ge b_i$ and $X_i\cdot d \ge b_i$ hold for all $i$ with $X_i$ being the $i$th row of $X$.
+	\begin{eqnarray*}
+		X_i \cdot (\mu \cdot c + (1-\mu)\cdot d) &=& \mu X_i \cdot c + (1-\mu) X_i \cdot d\\
+		&\ge& \mu \min(X_i\cdot c,X_i\cdot d) + (1-\mu)\min(X_i\cdot c, X_i \cdot d)\\
+		&=& \min(X_i\cdot c,X_i\cdot d)\\
+		&\ge& b_i
+	\end{eqnarray*}
+	
+	The last inequality follows from the fact that $c$ and $d$ are elements of $\mathcal{C}(X,b)$.
+	Thus $\mathcal{C}(X,b)$ is a convex set.
+\end{proof}
+
+\subsection*{(b)}
+
+Let $X\in\mathbb{R}^{m\times n}$ such that $\mathcal{C}(X,b)$ is non-empty for some $b\in\mathbb{R}^m,b>0$.
+Consider the optimization problem
+\begin{eqnarray*}
+	\max_{w\in \mathbb{R}^n,\lambda \in \mathbb{R}} \lambda&&\\
+	\text{subject to} && \norm{w}^2_2 \le 1 \text{ and}\\
+	&& \mathds{1}\cdot \lambda \le X\cdot w
+\end{eqnarray*}
+
+\paragraph{Prove that the problem is a convex optimization problem.}
+
+\begin{proof}
+	In order to be a convex optimization problem, the objective function as well as the domain of the objective function has to be convex.
+	Well, in our case since it is a maximization problem, the objective function has to be concave but that is almost the same.
+	So let's start by proofing that the domain is a convex set.
+	
+	Let $a = \begin{pmatrix}
+	w_1\\
+	\lambda_1
+	\end{pmatrix}$ and $b =  \begin{pmatrix}
+	w_2\\
+	\lambda_2
+	\end{pmatrix}$ be two points fulfilling the explicit constraints.
+	Then for some $\mu\in[0,1]$ $c = \begin{pmatrix} 
+		w_3\\
+		\lambda_3
+	\end{pmatrix} = \begin{pmatrix}
+		\mu w_1 + (1-\mu) w_2\\
+		\mu \lambda_1 + (1-\mu) \lambda_2
+	\end{pmatrix}$.
+	
+	\begin{eqnarray}
+		\norm{w_3}_2^2 &=& \norm{\mu w_1 + (1-\mu) w_2}_2^2 \nonumber \\
+		&=& \mu^2\underbrace{\norm{w_1}_2^2}_{\le 1} + (1-\mu)^2\underbrace{\norm{w_2}_2^2}_{\le 1} + 2\cdot \mu(1-\mu) w_1^Tw_2\nonumber\\
+		&\le& \mu^2 +(1-\mu)^2 +2\cdot \mu(1-\mu)\norm{w_1}_2\norm{w_2}_2 \cos(\alpha)\label{eq:cos}
+	\end{eqnarray}
+	
+	with $\alpha$ being the angle between the vectors $w_1$ and $w_2$.
+	We have to distinguish 2 cases now:
+	
+	\paragraph{1. case: $\cos(\alpha) \ge 0$:}
+	Then we have $0 \le \norm{w_1}_2\norm{w_2}_2 \cos(\alpha) \le 1$ and thus
+	\begin{eqnarray*}
+		\eqref{eq:cos} &\le& \mu^2+ (1-\mu)^2 +2\mu(1-\mu)\\
+		&=& 1
+	\end{eqnarray*}
+	
+	\paragraph{2. case: $\cos(\alpha) < 0$:}
+	Then we have $-1 \le \norm{w_1}_2\norm{w_2}_2 \cos(\alpha) \le 0$.
+	
+	\begin{eqnarray*}
+		\eqref{eq:cos} & \le & \mu^2 + (1-\mu)^2\\
+		&=& 1 -2\mu +2\mu^2\\
+		&=& 1-2\mu(\underbrace{1-\mu}_{\ge 0})\\
+		&\le& 1
+	\end{eqnarray*}
+	
+	Thus, the first explicit constraints holdsfor all $\mu$. Let's continue with the second constraint.
+	\begin{eqnarray*}
+		\mathds{1}\lambda_3 &=& \underbrace{\mu \mathds{1} \lambda_1}_{\le \mu Xw_1} + \underbrace{(1-\mu)\mathds{1}\lambda_2}_{\le (1-\mu)Xw_2}\\
+		&\le& \mu X w_1 + (1-\mu)Xw_2\\
+		&=& X(\mu w_1 + (1-\mu) w_2)\\
+		&=& Xw_3
+	\end{eqnarray*}
+	
+	Consequently, the second explicit constraint holds as well.
+	Now, we only have to check that the objective function $f(\lambda)=\lambda$ is concave.
+	This is true, since $f(\mu\lambda_1 + (1-\mu)\lambda_2) \ge \mu \lambda_1 + (1-\mu)\lambda_2$.
+	Thus, the optimization problem is convex.
+\end{proof}
+
+\paragraph{Describe the optimal solution $(w_{max},\lambda_{max})$.} 
+If we consider this time each row of $X$ being a vector and $w$ being the normal vector of a hyperplane, then we can interpret the optimization problem the following way:
+The optimization problem finds the hyperplane defined by $w$ with maximal distance $\lambda$ from the origin such that all data points (rows of the matrix $X$) are in the positive half space (in the half space which does not contain the origin) defined by the hyperplane.
+If there is no such hyperplane, because all half spaces containing the data points always contains the origin, then the solution is $0$.
+In fact $0$ is a lower bound of the maximization problem, because it can always be obtained by setting $w=0$.
+
+\subsection*{(c)}
+Show that
+\begin{eqnarray*}
+	\min_{\alpha\in \mathbb{R}^m} \norm{X^T\cdot \alpha}_2&&\\
+	\text{subject to} && \mathds{1}^T\alpha = 1 \text{ and}\\
+	&& \alpha \ge 0
+\end{eqnarray*}
+is the lagrange dual of the original problem.
+
+The Lagrangian of the original problem is
+\begin{eqnarray*}
+	\Lambda(w,\lambda,\alpha,\beta) &=& \lambda - \beta\cdot (\norm{w}_2^2-1) - \alpha^T(\mathds{1}\lambda - X\cdot w)
+\end{eqnarray*}
+
+The Lagrange dual function is then 
+\begin{eqnarray}
+	g(\alpha,\beta) &=& \sup_{w,\lambda} \Lambda(w,\lambda,\alpha,\beta) \label{eq:dualFunc}\\
+	\nabla_w \Lambda &=& -2\beta\cdot w+X^T\alpha\label{eq:w}\\
+	\frac{d\Lambda}{d\lambda} &=& 1 - \alpha^T\mathds{1}\label{eq:lambda}
+\end{eqnarray}
+
+Setting the equations \eqref{eq:w} and \eqref{eq:lambda} to zero and inserting them into equation \eqref{eq:dualFunc} yields
+\begin{eqnarray}
+	w &=& \frac{X^T\alpha}{2\beta} \label{eq:c1}\\
+	\alpha^T\mathds{1} &=& 1 \label{eq:c2}\\
+	\eqref{eq:dualFunc} &=& -\beta \frac{\alpha^TXX^T\alpha}{4\beta^2} + \beta +\frac{\alpha^TXX^T\alpha}{2\beta}\nonumber\\
+	&=& \frac{\alpha^TXX^T\alpha}{4\beta} + \beta\nonumber\\
+	&=& \frac{\norm{X^T\alpha}_2^2}{4\beta} + \beta\nonumber
+\end{eqnarray}
+
+Thus the dual problem is
+\begin{eqnarray*}
+	\min_{\alpha \in \mathbb{R}^m, \beta \in \mathbb{R}} \frac{\norm{X^T\alpha}_2^2}{4\beta} + \beta&&\\
+	\text{subject to} && \alpha,\beta \ge 0 \text{ and}\\
+	&& \alpha^T\mathds{1} = 1		
+\end{eqnarray*}
+
+However, we can simplify the problem even further.
+\begin{eqnarray}
+	\frac{d g}{d\beta} &=& -\frac{\norm{X^T\alpha}_2^2}{4\beta^2} + 1 \label{eq:g}\\
+	\frac{d^2 g}{d\beta^2} &=& 2\frac{\norm{X^T\alpha}_2^2}{4\beta^3}\label{eq:g2}
+\end{eqnarray}
+
+Setting equation \eqref{eq:g} to zero yields
+
+\begin{eqnarray}
+	4\beta^2 &=& \norm{X^T\alpha}_2^2\nonumber \\
+	\beta &=& \frac{\norm{X^T\alpha}_2}{2} \ge 0 \label{eq:beta}
+\end{eqnarray}
+
+Inserting this into the second derivative, equation \eqref{eq:g2}, shows that this is indeed a local minimum.
+Furthermore, it fulfills the explicit constraint of $\beta$.
+Thus, we can insert it into the dual problem and this gives us:
+
+\begin{eqnarray*}
+	\min_{\alpha \in \mathbb{R}^m} \norm{X^T\alpha}_2&&\\
+	\text{subject to} && \alpha \ge 0 \text{ and}\\
+	&& \alpha^T\mathds{1} = 1
+\end{eqnarray*}
+
+\subsection*{(d)}
+
+\paragraph{Show that the duality gap is zero.}
+	In order to show that the duality gap is zero, we have to prove that the strong duality holds.
+	Since the original maximization problem is convex, we only have to show that the Slater's condition holds.
+	The Slater's condition states that it holds iff there exists a strictly feasible point.
+	
+	\begin{proof}
+		As indicated in (b), there exists some $b\in\mathbb{R}^m,b>0$ such that $\mathcal{C}(X,b)$ is non empty.
+		By setting $\lambda = \min_i(b_i)$ it follows that the set $\mathcal{C}(X,\mathds{1}\lambda)$ is non empty as well.
+		Let $w\in\mathcal{C}(X,\mathds{1}\lambda)$. 
+		Since $b>0$, $\norm{w}_2>0$. Let $\tilde{w} = \frac{w}{2\norm{w}_2}$. 
+		Then $\tilde{w} \in \mathcal{C}(X,\mathds{1}\cdot\frac{\lambda}{2\norm{w}_2})$, because $\mathds{1}\lambda \le X w \Leftrightarrow \mathds{1} \frac{\lambda}{2\norm{w}_2} \le X\tilde{w}$.
+		Furthermore, there exists some $\epsilon>0$ such that $\tilde{w} \in \mathcal{C}\left(X,\mathds{1}\cdot \left(\frac{\lambda}{2\norm{w}_2}-\epsilon\right)\right)$ and $\mathds{1}\underbrace{\left(\frac{\lambda}{2\norm{w}_2}-\epsilon\right)}_{=\tilde{\lambda}} < X \tilde{w}$.
+		Moreover, the first explicit constraint is strict as well:
+		\begin{eqnarray*}
+			\norm{\tilde{w}}_2^2 &=& \norm{\frac{w}{2\norm{w}_2}}_2^2\\
+			&=& \frac{1}{4}\frac{\norm{w}_2^2}{\norm{w}_2^2}\\
+			&<& 1
+		\end{eqnarray*}
+		
+		Thus the data point $\begin{pmatrix} \tilde{w}\\ \tilde{\lambda} \end{pmatrix}$ has to exist and is strictly feasible.
+		Therefore, the strong duality holds and consequently the duality gap is zero.
+	\end{proof}
+	
+\paragraph{Describe how a solution for the prima problem can be obtained from a solution of the dual Problem.}
+
+Since the duality gap equals zero, the calculated $\alpha$ can directly be used to calculate the corresponding values $\lambda_{max}$ and $w_{max}$.
+
+Let $\alpha^\star$ be the solution of the dual problem.
+Then by using the equations \eqref{eq:c1} and \eqref{eq:beta} we obtain
+\begin{eqnarray}
+	w_{max} &=& \frac{X^T\alpha}{\norm{X^T\alpha}_2} \label{eq:aw}
+\end{eqnarray}
+and
+\begin{eqnarray*}
+	\lambda_{max} &=& \min_{i}\left( X_i \cdot w_{max} \right)
+\end{eqnarray*}
+
+\paragraph{Describe the optimal solution $\lambda_{min}$ and the consequences of strong duality.}
+
+Due to the constraints $\mathds{1}^T\alpha=1$ and $\alpha \ge 0$, the term $X^T\alpha$ can be any vector belonging to a polygon $P$.
+The polygon $P$ is the convex hull of the corner points $X_i$ which are the rows of $X$.
+Thus, the minimization problem finds the vector $v=X^T\alpha_{min}$ of the polygon $P$ with minimal distance to the origin.
+Since $P$ is convex, we can use $v$ to define a hyperplane separating all data points (rows of $X$) in a half space not containing the origin if that is possible or $v$ is 0.
+The length of $v$ would be the distance of the plane from the origin and the normalized $v$ would be its normal vector.
+This gives us a lower bound for the original problem, where we try to find a separating hyperplane with maximal distance from the origin.
+However, since the duality gap is zero, the solutions of the primal problem and the dual problem coincide.
+Consequently, we can directly take the normalized $v$ as our $w_{max}=\frac{v}{\norm{v}_2}$ and $\lambda_{max}=\norm{v}_2$ in order to solve the primal problem.
+The first equation is the same as equation \eqref{eq:aw}.
+\end{document}
